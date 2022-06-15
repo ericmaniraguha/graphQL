@@ -4,9 +4,7 @@ import useCharacters from '../hooks/useCharacters';
 import { Link } from 'react-router-dom';
 
 const CharactersList = () => {
-  const { id } = useParams();
-
-  const { error, loading, data } = useCharacters(id);
+  const { error, loading, data } = useCharacters();
 
   if (loading) return <div className='loading'>spinner...</div>;
 
@@ -17,8 +15,8 @@ const CharactersList = () => {
       {data.characters.results.map((characters) => {
         return (
           <Link to={`/${character.id}`}>
-            <img src={characters.image} />
-            <h2>{characters.name}</h2>
+            <img src={character.image} />
+            <h2>{character.name}</h2>
           </Link>
         );
       })}

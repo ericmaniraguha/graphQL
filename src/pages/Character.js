@@ -1,11 +1,12 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import useCharacter from '../hooks/useCharacter';
 import './Character.css';
 
 const Character = () => {
-  const { data, loading, error } = useCharacter(1);
+  const { id } = useParams();
 
-  console.log({ error, loading, data });
+  const { data, loading, error } = useCharacter(id);
 
   if (error) return <div>Something went wrong.</div>;
 
