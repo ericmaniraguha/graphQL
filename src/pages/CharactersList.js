@@ -1,27 +1,9 @@
 import React from 'react';
 import './CharactersList.css';
-import { useQuery, gql } from '@apollo/client';
-
-const GET_CHARACTERS = gql`
-  query {
-    characters {
-      results {
-        id
-        name
-        image
-      }
-    }
-  }
-`;
+import useCharacters from '../hooks/useCharacters';
 
 const CharactersList = () => {
-  // const obj = useQuery(GET_CHARACTERS);
-  // obj.error;
-  // obj.loading;
-  // obj.data;
-
-  const { error, loading, data } = useQuery(GET_CHARACTERS);
-  console.log(error, loading, data);
+  const { error, loading, data } = useCharacters();
 
   if (loading) return <div className='loading'>spinner...</div>;
 
